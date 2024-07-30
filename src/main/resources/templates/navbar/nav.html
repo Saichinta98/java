@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multiple Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <style>
+  .navee{
+  font-family: "Playwrite IS", cursive;
+  font-optical-sizing: auto;
+ }
+ body{
+ 
+ }
+.cards{
+  background-image: url("https://img.freepik.com/premium-vector/smartphone-high-digital-vector_276941-304.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721520000&semt=ais_user");
+		  background-size:100% 450px;
+		  background-repeat:no-repeat;
+ }
+ .cards2{
+ width:250px;
+ background:transparent;
+ border:none;
+ color:white;
+ }
+ .naveen{
+ border-radius: 50%;
+ }
+.navee2{
+color:white;
+background-image:url("https://motorolahk.vtexassets.com/assets/vtex.file-manager-graphql/images/457b0f98-7aaa-4fe9-ba51-ab7a0c983801___ea751eca19b67e0df02b8b4c2cb6de5d.jpg");
+background-size:100% 320px;
+background-repeat:no-repeat;
+}
+  </style>
+  <body>
+  
+         <nav class="navbar navbar-expand-lg bg-body-tertiary">
+         <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+        <img width="120px" src="https://motorolain.vtexassets.com/arquivos/motorola-logo.png" >
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 " th:each="n : ${navbar}">
+          
+          <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field1}"> </a></li>
+		  
+		  <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field2}"> </a></li>
+		  
+		  <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="collapse" 
+          data-bs-target="#verticalNavbar" aria-expanded="false" aria-controls="verticalNavbar" 
+		  th:text="${n.field3}"></a></li>
+		  
+		  <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="/navbar/cards"
+		  th:text="${n.field4}"> </a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="/navbar/carousel"
+		  th:text="${n.field5}"> </a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field6}"> </a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field7}"> </a></li>
+           
+          </ul>
+           <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+        </div>
+        </div>
+    </nav>
+    
+<div class="vertical-navbar collapse navee2" id="verticalNavbar" >
+<button type="button" class="btn-close btn-close-white" data-bs-toggle="collapse" data-bs-target="#verticalNavbar" aria-label="Close"></button>
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0 " th:each="n : ${navbar2}">
+          
+          <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field1}"></a></li>
+		  
+		  <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field2}"></a></li>
+		  
+		  <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field3}"></a></li>
+		  
+		  <li class="nav-item">
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field4}"></a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field5}"></a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field6}"></a></li>
+		  
+		  <li class="nav-item">	
+		  <a class="nav-link active" aria-current="page" href="#"
+		  th:text="${n.field7}"></a></li>
+           
+          </ul>
+</div>
+
+ <div class="cantainer">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div th:each="s, iterStat : ${carousel}" class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active'">
+      <img th:src="@{'/images/' + ${s.imageFile}}" class="d-block w-100 " height="585px" alt="image not found">
+    </div>
+  </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+</div><br>
+
+<h1 class="text-center navee">Top Buys, Big Fun</h1><br>
+
+<div class="cantainer cards">
+<div class="row  row-cols-md-4">
+  <div class="card m-3 cards2" th:each="p: ${cards}">
+    <img th:src="@{'/images/' + ${p.imageFile}}" class="card-img-top" alt="...">
+    <div class="text-center">
+      <h5 class="card-title"><td th:text="${p.mname}"></td></h5>
+      <p class="card-text"><td th:text="${p.price}"></td></p>
+       <a href="#" class="btn btn-dark naveen">Add to cart</a>
+    </div>
+  </div>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
